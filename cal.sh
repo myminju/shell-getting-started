@@ -10,7 +10,7 @@ read -p "Input Number : " num2
 case $op in
   '+') total=`expr $num1 + $num2` ;;
   '-') total=`expr $num1 - $num2` ;;
-  '*') total=`expr $num1 * $num2` ;;
+  '*') total=`expr $num1 \* $num2` ;;
   '/') total=`expr $num1 / $num2` ;;
 esac
 
