@@ -24,10 +24,10 @@ then
     read -p "Input Number : " num2
     
     case $op in
-      '+') total=`expr $num1 + $num2` ;;
-      '-') total=`expr $num1 - $num2` ;;
-      '*') total=`expr $num1 \* $num2` ;;
-      '/') total=`expr $num1 / $num2` ;;
+      '+') total=`expr $total + $num2` ;;
+      '-') total=`expr $total - $num2` ;;
+      '*') total=`expr $total \* $num2` ;;
+      '/') total=`expr $total / $num2` ;;
     esac
   
     read -p "Will you stop? " answer
