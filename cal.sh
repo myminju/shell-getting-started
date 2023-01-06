@@ -13,7 +13,6 @@ isNumber()
     then
       break
     fi
-    echo "Not a number"
   done
   echo ${num}
 }
@@ -27,9 +26,8 @@ isOp()
     then
       break
     fi
-    echo "Not an Operation" 
   done
-  echo ${op}
+  echo "$op"
 }
 
 cal() 
