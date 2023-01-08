@@ -59,7 +59,7 @@ isAnswer()
 num1=$(isNumber)
 op=$(isOp)
 num2=$(isNumber)
-cal $op $num1 $num2
+cal "$op" $num1 $num2
 
 while true
 do
@@ -70,7 +70,7 @@ do
   fi
   op=$(isOp)
   num2=$(isNumber)
-  cal $op $total $num2
+  cal "$op" $total $num2
 done
 
 echo "Result : $total"
