@@ -73,7 +73,7 @@ do
     break
   fi
   # 연산을 계속하겠다고 하면
-  op=$(is_op)
+  op=$(is_operation)
   num2=$(is_number)
   calculate "$op" $TOTAL $num2
 done
