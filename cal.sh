@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "====== Simple Calculator ======="
 TOTAL=0
+FLAG=0
 REGEX_NUMBER="^-?[0-9]+$"
 REGEX_OPERATION="^[\+|\*|\/|\%|\-]$"
 
@@ -43,20 +44,22 @@ calculate()
 
 is_answer()
 {
+  local answer=""
   while true
   do
     read -p "Will you stop? (YES, NO) : " answer
-    if [ $answer = "YES" ] || [ $answer = "y" ] || [ $answer = "yes" ];
+    if [ "$answer" = "YES" ] || [ "$answer" = "y" ] || [ "$answer" = "yes" ]
     then
+      FLAG=1
       break
-    elif [ $answer = "NO" ] || [ $answer = "n" ] || [ $answer = "no" ];
+    elif [ "$answer" = "NO" ] || [ "$answer" = "n" ] || [ "$answer" = "no" ]
     then
+      FLAG=0
       break
-    else
+    else 
       echo "Not a proper answer"
     fi
   done
-  echo ${answer}
 }  
 
 #main
@@ -71,9 +74,9 @@ calculate "$op" $num1 $num2
 
 while true
 do
-  answer=$(is_answer)
+  is_answer
   # 연산을 그만하겠다고 하면
-  if [ $answer = "YES" ] || [ $answer = "y" ] || [ $answer = "yes" ];
+  if [ $FLAG -eq 1 ] 
   then
     break
   fi
