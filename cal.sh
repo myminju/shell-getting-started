@@ -31,6 +31,22 @@ is_operation()
   echo "$op"  # 중요
 }
 
+is_divided_by_zero()
+{
+  while true
+  do
+    if [ "$op" = "/" ] && [ $num2 -eq 0 ]
+    then
+      echo "divided by zero"
+      op=$(is_operation)
+      num2=$(is_number)
+      continue
+    else
+      break
+    fi
+  done
+}
+
 calculate() 
 {
   case $1 in
@@ -68,6 +84,9 @@ is_answer()
 num1=$(is_number)
 op=$(is_operation)
 num2=$(is_number)
+
+# 0으로 나누는지 확인하기
+is_divided_by_zero "$op" $num2  
 
 # 계산 함수에 받은 값 넘겨주기 
 calculate "$op" $num1 $num2
