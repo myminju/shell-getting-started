@@ -2,7 +2,7 @@
 echo "====== Simple Calculator ======="
 TOTAL=0
 REGEX_NUMBER="^-?[0-9]+$"
-REGEX_OPERATION="^[\+|\-|\*|\/|\%]$"
+REGEX_OPERATION="^[\+|\*|\/|\%|\-]$"
 
 is_number()
 {
@@ -32,13 +32,13 @@ is_operation()
 
 calculate() 
 {
-case $1 in
-  "+") TOTAL=`expr $2 + $3` ;;
-  "-") TOTAL=`expr $2 - $3` ;;
-  "*") TOTAL=$(($2 * $3)) ;;
-  "/") TOTAL=`expr $2 / $3` ;;
-  "%") TOTAL=`expr $2 % $3` ;;
-esac
+  case $1 in
+    "+") TOTAL=`expr $2 + $3` ;;
+    "-") TOTAL=`expr $2 - $3` ;;
+    "*") TOTAL=$(($2 * $3)) ;;
+    "/") TOTAL=`expr $2 / $3` ;;
+    "%") TOTAL=`expr $2 % $3` ;;
+  esac
 }
 
 is_answer()
@@ -46,9 +46,14 @@ is_answer()
   while true
   do
     read -p "Will you stop? (YES, NO) : " answer
-    if [ $answer = "YES" -o $answer = "NO" ]
+    if [ $answer = "YES" ] || [ $answer = "y" ] || [ $answer = "yes" ];
     then
       break
+    elif [ $answer = "NO" ] || [ $answer = "n" ] || [ $answer = "no" ];
+    then
+      break
+    else
+      echo "Not a proper answer"
     fi
   done
   echo ${answer}
@@ -68,7 +73,7 @@ while true
 do
   answer=$(is_answer)
   # 연산을 그만하겠다고 하면
-  if [ $answer = "YES" ]
+  if [ $answer = "YES" ] || [ $answer = "y" ] || [ $answer = "yes" ];
   then
     break
   fi
