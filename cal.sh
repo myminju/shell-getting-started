@@ -104,5 +104,4 @@ do
   num2=$(is_number)
   calculate "$op" $TOTAL $num2
 done
-
-echo "Result : $TOTAL"
+echo "\033[32;1mResult : $TOTAL\033[0m"
